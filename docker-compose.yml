@@ -1,0 +1,19 @@
+services:
+  # 后端服务
+  backend:
+    build: ./backend
+    restart: always
+    env_file: .env
+    ports:
+      - "8000:8000"
+
+  # 前端服务
+  frontend:
+    build: 
+      context: ./frontend
+      # 这里的环境变量会在构建时注入前端代码
+      args:
+        - NEXT_PUBLIC_API_URL=http://${SERVER_IP}:8000
+    restart: always
+    ports:
+      - "3000:3000"
