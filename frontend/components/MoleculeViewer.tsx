@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button"; // 记得 add button
+import { Button } from "@/components/ui/button";
+import { API_BASE } from '../src/config';
 
 export default function MoleculeViewer() {
   const [smiles, setSmiles] = useState("c1ccccc1");
@@ -27,14 +28,20 @@ export default function MoleculeViewer() {
   }, [smiles]);
 
   // 调用后端 API
-  const handleAnalyze = async () => {
+const handleAnalyze = async () => {
+    if (!smiles.trim()) return; // 简单校验
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/calc?smiles=${encodeURIComponent(smiles)}`);
+      // 直接使用全局 import 的 API_BASE，代码干净清爽
+      const response = await fetch(`${API_BASE}/calc?smiles=${encodeURIComponent(smiles)}`);
+      
+      if (!response.ok) throw new Error("后端响应异常");
+      
       const data = await response.json();
       setResult(data);
     } catch (error) {
       console.error("后端连接失败", error);
+      alert("无法连接到后端服务器，请检查 API 地址或防火墙设置");
     } finally {
       setLoading(false);
     }
