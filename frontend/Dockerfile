@@ -1,5 +1,5 @@
 # 第一阶段：编译代码
-FROM node:20-slim AS builder
+FROM node:24-slim AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -10,7 +10,7 @@ ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 RUN npm run build
 
 # 第二阶段：运行（只保留运行需要的文件，减小体积）
-FROM node:20-slim AS runner
+FROM node:24-slim AS runner
 WORKDIR /app
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
