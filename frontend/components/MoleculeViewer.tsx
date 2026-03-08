@@ -76,7 +76,7 @@ const handleAnalyze = async () => {
             {result ? (
               <>
                 <div className="flex justify-between"><span>分子量:</span> <b>{result.mw}</b></div>
-                <div className="flex justify-between"><span>LogP:</span> <b>{result.logp}</b></div>
+                <div className="flex justify-between"><span>LogP:</span> <b>{String(result.logp)}</b></div>
                 <div className="flex justify-between"><span>氢键供体:</span> <b>{result.hbd}</b></div>
                 <div className="flex justify-between"><span>氢键受体:</span> <b>{result.hba}</b></div>
               </>
