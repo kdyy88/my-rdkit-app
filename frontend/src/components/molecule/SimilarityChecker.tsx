@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { API_BASE } from '../src/config';
+import { API_BASE } from '@/lib/config';
 
 export default function SimilarityChecker() {
   const [smi1, setSmi1] = useState("CC(=O)Oc1ccccc1C(=O)O"); // 阿司匹林

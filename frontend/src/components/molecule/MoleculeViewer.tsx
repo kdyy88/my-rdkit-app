@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { API_BASE } from '../src/config';
+import { API_BASE } from '@/lib/config';
 
 export default function MoleculeViewer() {
   const [smiles, setSmiles] = useState("c1ccccc1");

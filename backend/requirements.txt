@@ -1,5 +1,11 @@
+# This file is maintained for Docker compatibility
+# Primary dependency management is in pyproject.toml
 fastapi
 uvicorn
 rdkit
+mcp
+fastmcp
+pubchempy
+sse-starlette
 openai
 python-dotenv
